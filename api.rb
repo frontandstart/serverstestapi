@@ -6,7 +6,6 @@ require 'active_record'
 require 'json'
 require 'net/ping'
 require 'haml'
-require 'capistrano'
 
 ActiveRecord::Base.establish_connection(
   adapter: "mysql2",
