@@ -1,0 +1,12 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: sintest
+  username: 4au
+  password: xyz88
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: api
+  username: cloud
+  password: xyz88

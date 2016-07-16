@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'eventmachine'
-gem 'parallel'
 gem 'sinatra'
+gem 'activerecord'
+gem 'mysql2'
+gem 'yaml'
 gem 'json'
 gem 'haml'
 gem 'net-ping'
 
-gem 'activerecord'
-gem 'mysql2'
-
+gem 'eventmachine'
+gem 'parallel'

@@ -1,19 +1,18 @@
 require 'sinatra'
-require 'mysql2'
-require 'eventmachine'
-require 'parallel'
 require 'active_record'
+require 'mysql2'
+require 'yaml'
 require 'json'
 require 'net/ping'
 require 'haml'
 
-ActiveRecord::Base.establish_connection(
-  adapter: "mysql2",
-  encoding: "utf8",
-  database: "sintest",
-  username: "4au",
-  password: "xyz88"
-)
+require 'eventmachine'
+require 'parallel'
+
+@environment = ENV['RACK_ENV'] || 'development'
+@dbconfig = YAML.load(File.read('db/database.yml'))
+
+ActiveRecord::Base.establish_connection @dbconfig[@environment]
 
 class Ip < ActiveRecord::Base
   has_many :pings
