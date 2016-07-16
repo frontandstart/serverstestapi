@@ -8,7 +8,3 @@ gem 'haml'
 gem 'activerecord'
 gem 'mysql2'
 
-group :development do
-  gem 'capistrano'
-  gem 'capistrano-rvm'
-end
