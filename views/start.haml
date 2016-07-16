@@ -1,0 +1,47 @@
+%h3 Hello, this is test task for servers.com from Roman K.
+%p
+  This case implement simple API that allow to add hostname or IP ad address and track it TTL.
+  %br
+
+%p Here I choice way without pure SQL, using gems: activerecord, sinatra, json, net-ping, net-uri
+$form 
+%ol
+  %h3 API METHODS.
+  %h4 Add/edit/del hosts:
+  %li
+    %p POST /ips
+    %span Adding hostname adress to track, allowed params: adress, on.
+    %p curl -X POST -d "address=hostname&on=true" #{request.base_url}/api
+  %li
+    %p 
+      UPDATE
+      %a{ :href => "/ips/1"} /ips/:id/
+    %span List of hosts/ip adress with status on
+    %p curl -X PUT -d "address=hostname2&on=false" #{request.base_url}/ips/:id/
+  %li
+    %p
+      DELETE /api/id
+    %span Delete hostname from tracking
+    %p curl -X DELETE #{request.base_url}/ips/:id/
+  %h4 Get hosts information and statistic:
+  %li
+    %p 
+      GET
+      %a{ :href => "/ips"} /ips
+    %span List of hosts/ip adress with status on.
+    %p curl -X GET #{request.base_url}/ips/
+
+  %li
+    %p 
+      GET
+      %a{ :href => "/ips/1"} /ips/:id/
+    %span Get one hosts/ip adress with all avalible statistic.
+    %p curl -X GET #{request.base_url}/ips/:id/
+
+  %li
+    %p 
+      GET
+      %a{ :href => "/ips/1"} /ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+    %span 
+      Get one hosts/ip statistic in time interval.
+    %p curl -X GET #{request.base_url}/ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28

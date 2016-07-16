@@ -1,0 +1,110 @@
+# Logfile created on 2016-07-09 02:40:18 +0400 by logger.rb/54362
+D, [2016-07-09T02:46:28.753229 #71825] DEBUG -- :   [1m[35m (103.3ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+D, [2016-07-09T02:46:28.788560 #71825] DEBUG -- :   [1m[35m (31.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2016-07-09T02:46:28.789659 #71825] DEBUG -- :   [1m[35m (0.9ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2016-07-09T02:46:28.796672 #71825] DEBUG -- :   [1m[35m (6.5ms)[0m  [1m[34mSELECT GET_LOCK('6069653679509713230', 0);[0m
+D, [2016-07-09T02:46:28.861732 #71825] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (30.0ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2016-07-09T02:46:28.932081 #71825] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2016-07-09T02:46:28.936932 #71825] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T02:46:28.940253 #71825] DEBUG -- :   [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'default_env', '2016-07-08 22:46:28', '2016-07-08 22:46:28')[0m
+D, [2016-07-09T02:46:28.941226 #71825] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T02:46:28.942131 #71825] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[34mSELECT RELEASE_LOCK('6069653679509713230')[0m
+D, [2016-07-09T03:25:02.404244 #2719] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2016-07-09T03:25:02.405271 #2719] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('6069653679509713230', 0);[0m
+D, [2016-07-09T03:25:02.418922 #2719] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2016-07-09T03:25:02.439618 #2719] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (3.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2016-07-09T03:25:02.445748 #2719] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T03:25:02.447056 #2719] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T03:25:02.447799 #2719] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('6069653679509713230')[0m
+D, [2016-07-09T03:26:18.891860 #2734] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2016-07-09T03:26:18.892262 #2734] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('6069653679509713230', 0);[0m
+D, [2016-07-09T03:26:18.903741 #2734] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2016-07-09T03:26:18.914103 #2734] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2016-07-09T03:26:18.921400 #2734] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T03:26:18.922746 #2734] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T03:26:18.923151 #2734] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('6069653679509713230')[0m
+D, [2016-07-09T03:27:17.371207 #2745] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2016-07-09T03:27:17.371943 #2745] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('6069653679509713230', 0);[0m
+D, [2016-07-09T03:27:17.384340 #2745] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2016-07-09T03:27:17.394035 #2745] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2016-07-09T03:27:17.403434 #2745] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T03:27:17.404671 #2745] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T03:27:17.405121 #2745] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('6069653679509713230')[0m
+D, [2016-07-09T03:28:58.076054 #2765] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2016-07-09T03:28:58.076818 #2765] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('6069653679509713230', 0);[0m
+D, [2016-07-09T03:28:58.090408 #2765] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+I, [2016-07-09T03:28:58.096436 #2765]  INFO -- : Migrating to Init (1)
+D, [2016-07-09T03:28:58.137906 #2765] DEBUG -- :   [1m[35m (36.6ms)[0m  [1m[35mCREATE TABLE `ips` (`id` int AUTO_INCREMENT PRIMARY KEY, `adress` varchar(255), `on` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+D, [2016-07-09T03:28:58.164234 #2765] DEBUG -- :   [1m[35m (22.2ms)[0m  [1m[35mCREATE TABLE `pings` (`id` int AUTO_INCREMENT PRIMARY KEY, `rtt` varchar(255), `ip_id` int, `created_at` datetime, `updated_at` datetime, CONSTRAINT `fk_rails_0e0b4e97e1`
+FOREIGN KEY (`ip_id`)
+  REFERENCES `ips` (`id`)
+) ENGINE=InnoDB[0m
+D, [2016-07-09T03:28:58.167484 #2765] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T03:28:58.170677 #2765] DEBUG -- :   [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('1')[0m
+D, [2016-07-09T03:28:58.171325 #2765] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T03:28:58.178059 #2765] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2016-07-09T03:28:58.185313 #2765] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T03:28:58.186345 #2765] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T03:28:58.186727 #2765] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('6069653679509713230')[0m
+D, [2016-07-09T03:32:36.778034 #2797] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2016-07-09T03:32:36.778801 #2797] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('6069653679509713230', 0);[0m
+D, [2016-07-09T03:32:36.792744 #2797] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+D, [2016-07-09T03:32:36.809885 #2797] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2016-07-09T03:32:36.815668 #2797] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T03:32:36.817357 #2797] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T03:32:36.817739 #2797] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('6069653679509713230')[0m
+D, [2016-07-09T03:41:19.631802 #1897] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T03:41:28.248514 #1897] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T03:56:40.023331 #1897] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T03:56:40.032999 #1897] DEBUG -- :   [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO `ips` (`created_at`, `updated_at`) VALUES ('2016-07-08 23:56:40', '2016-07-08 23:56:40')[0m
+D, [2016-07-09T03:56:40.036333 #1897] DEBUG -- :   [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T04:10:17.128600 #1897] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T04:10:17.130498 #1897] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ips` (`created_at`, `updated_at`) VALUES ('2016-07-09 00:10:17', '2016-07-09 00:10:17')[0m
+D, [2016-07-09T04:10:17.131799 #1897] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T04:12:28.013355 #1897] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T04:12:28.014933 #1897] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ips` (`created_at`, `updated_at`) VALUES ('2016-07-09 00:12:28', '2016-07-09 00:12:28')[0m
+D, [2016-07-09T04:12:28.017487 #1897] DEBUG -- :   [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T04:16:34.604744 #1897] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T04:16:56.418159 #3325] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T04:16:56.436721 #3325] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `ips` (`adress`, `created_at`, `updated_at`) VALUES ('yandex.ru', '2016-07-09 00:16:56', '2016-07-09 00:16:56')[0m
+D, [2016-07-09T04:16:56.438068 #3325] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T04:17:28.994914 #3325] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T04:28:18.013257 #3325] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T04:28:18.015999 #3325] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ips` (`adress`, `created_at`, `updated_at`) VALUES ('\'\';ass=\'as\'', '2016-07-09 00:28:18', '2016-07-09 00:28:18')[0m
+D, [2016-07-09T04:28:18.018366 #3325] DEBUG -- :   [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T04:30:03.305986 #3325] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T18:14:50.130248 #3325] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T18:14:50.156062 #3325] DEBUG -- :   [1m[35mSQL (11.8ms)[0m  [1m[32mINSERT INTO `ips` (`adress`, `created_at`, `updated_at`) VALUES ('\"\";ass=as', '2016-07-09 14:14:50', '2016-07-09 14:14:50')[0m
+D, [2016-07-09T18:14:50.159158 #3325] DEBUG -- :   [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T18:15:38.639125 #6555] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T18:15:38.659071 #6555] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ips` (`adress`, `created_at`, `updated_at`) VALUES ('yandex.ru;on=false', '2016-07-09 14:15:38', '2016-07-09 14:15:38')[0m
+D, [2016-07-09T18:15:38.660081 #6555] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T18:21:02.108228 #6555] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-09T18:21:02.110587 #6555] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `ips` (`adress`, `on`, `created_at`, `updated_at`) VALUES ('google.com', 0, '2016-07-09 14:21:02', '2016-07-09 14:21:02')[0m
+D, [2016-07-09T18:21:02.112465 #6555] DEBUG -- :   [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-09T18:46:19.579323 #6555] DEBUG -- :   [1m[36mIp Load (1.1ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T18:46:19.787399 #6555] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T20:47:39.209492 #7066] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-09T20:49:50.019396 #7066] DEBUG -- :   [1m[36mIp Load (0.3ms)[0m  [1m[34mSELECT `ips`.* FROM `ips`[0m
+D, [2016-07-10T05:27:59.588556 #4874] DEBUG -- :   [1m[35m (24.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+D, [2016-07-10T05:27:59.610023 #4874] DEBUG -- :   [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2016-07-10T05:27:59.610386 #4874] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+D, [2016-07-10T05:27:59.611018 #4874] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('6069653679509713230', 0);[0m
+D, [2016-07-10T05:27:59.625578 #4874] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+I, [2016-07-10T05:27:59.632723 #4874]  INFO -- : Migrating to Init (1)
+D, [2016-07-10T05:27:59.648957 #4874] DEBUG -- :   [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE `ips` (`id` int AUTO_INCREMENT PRIMARY KEY, `address` varchar(255), `on` tinyint(1) DEFAULT 1, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2016-07-10T05:27:59.670166 #4874] DEBUG -- :   [1m[35m (16.5ms)[0m  [1m[35mCREATE TABLE `pings` (`id` int AUTO_INCREMENT PRIMARY KEY, `rtt` varchar(255), `ip_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_pings_on_ip_id`  (`ip_id`), CONSTRAINT `fk_rails_0e0b4e97e1`
+FOREIGN KEY (`ip_id`)
+  REFERENCES `ips` (`id`)
+) ENGINE=InnoDB[0m
+D, [2016-07-10T05:27:59.674539 #4874] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-10T05:27:59.676572 #4874] DEBUG -- :   [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('1')[0m
+D, [2016-07-10T05:27:59.677319 #4874] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-10T05:27:59.682498 #4874] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2016-07-10T05:27:59.688762 #4874] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-10T05:27:59.691833 #4874] DEBUG -- :   [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'default_env', '2016-07-10 01:27:59', '2016-07-10 01:27:59')[0m
+D, [2016-07-10T05:27:59.692610 #4874] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+D, [2016-07-10T05:27:59.693026 #4874] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('6069653679509713230')[0m
+D, [2016-07-10T05:28:02.892581 #4862] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+D, [2016-07-10T05:28:02.901463 #4862] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ips` (`address`, `created_at`, `updated_at`) VALUES ('localhost', '2016-07-10 01:28:02', '2016-07-10 01:28:02')[0m
+D, [2016-07-10T05:28:02.902461 #4862] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
