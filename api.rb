@@ -11,7 +11,6 @@ require 'parallel'
 
 @environment = ENV['RACK_ENV'] || 'development'
 @dbconfig = YAML.load(File.read('db/database.yml'))
-
 ActiveRecord::Base.establish_connection @dbconfig[@environment]
 
 class Ip < ActiveRecord::Base
@@ -24,25 +23,10 @@ class Ping < ActiveRecord::Base
   belongs_to :ip
 end
 
-def run(opts)
-  EM.run do
-    Parallel.each(Ip.where(:on => true), in_threads: 11) do |host|
-      EM.add_periodic_timer(1) do
-        File.open("/Users/4au/servers-api/log/#{host.id}_#{host.address}.log", 'w+') do |f|
-          f.puts "EventMachine test action at #{Time.now} ping on #{host.address}"
-          @send = Net::Ping::ICMP.new("#{host.address}")
-          if @send.ping?
-            f.puts "ID: #{host.id}, address: #{host.address} - resolve in #{@send.duration}"
-          else
-            f.puts "id: #{host.id}, address: #{host.address} not resolve"
-          end
-        end
-      end
-    end
-  end
-end  
+
 
 class Apiapp < Sinatra::Base
+  
   get '/' do
     haml :start
   end
@@ -81,6 +65,24 @@ class Apiapp < Sinatra::Base
     p Ip.all.to_json
   end
   
+end
+
+def run(opts)
+  Parallel.each(Ip.all, in_threads: 11) do |host|
+    EM.run do
+      EM.add_periodic_timer(1) do
+        File.open("/Users/4au/servers-api/log/#{host.id}_#{host.address}.log", 'w+') do |f|
+          f.puts "EventMachine test action at #{Time.now} ping on #{host.address}"
+          @send = Net::Ping::ICMP.new(host.address)
+          if @send.ping?
+            f.puts "ID: #{host.id}, address: #{host.address} - resolve in #{@send.duration}"
+          else
+            f.puts "id: #{host.id}, address: #{host.address} not resolve"
+          end
+        end
+      end
+    end
+  end
 end
 
 run app: Apiapp.new
