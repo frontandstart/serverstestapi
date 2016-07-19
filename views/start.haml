@@ -41,7 +41,7 @@ $form
   %li
     %p 
       GET
-      %a{ :href => "/ips/1"} /ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+      %a{ :href => "/ips/1/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28"} /ips/:id/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
     %span 
       Get one hosts/ip statistic in time interval.
     %p curl -X GET #{request.base_url}/ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28

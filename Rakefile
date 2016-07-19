@@ -1,4 +1,4 @@
-require_relative 'api'
+require_relative 'db'
 namespace :db do
   task :default => :migrate
   task :migrate do

@@ -10,7 +10,8 @@ class Init < ActiveRecord::Migration[5.0]
     create_table :pings do |t|
       t.belongs_to :ip, foreign_key: true
       t.string :rtt
-      t.string :lost
+      t.boolean :timeout
+      t.boolean :noroute
 
       t.timestamps
     end

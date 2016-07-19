@@ -1,7 +1,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: sintest
+  database: api_test_1
   username: 4au
   password: xyz88
 production:
