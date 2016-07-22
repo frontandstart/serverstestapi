@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
-
-#extend Math, median
-gem 'facets'
 gem 'rake'
 gem 'sinatra'
-gem 'activerecord'
-gem 'mysql2'
+gem 'sinatra-reloader'
+gem 'thin'
+gem 'eventmachine'
 gem 'json'
 gem 'haml'
 gem 'net-ping'
+gem 'activerecord'
+gem 'mysql2'
 
-
-gem 'eventmachine'
+gem 'descriptive_statistics'

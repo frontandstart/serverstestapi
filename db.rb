@@ -10,6 +10,10 @@ class Ip < ActiveRecord::Base
   has_many :pings
   validates_presence_of :address
   validates_presence_of :on
+
+
+
+  
 end
 
 class Ping < ActiveRecord::Base

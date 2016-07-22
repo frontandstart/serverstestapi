@@ -4,9 +4,13 @@ development:
   database: api_test_1
   username: 4au
   password: xyz88
+  pool: 33
+  timeout: 10000
 production:
   adapter: mysql2
   encoding: utf8
   database: api
   username: cloud
   password: xyz88
+  pool: 66
+  timeout: 11000

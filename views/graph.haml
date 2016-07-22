@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %script{ :src => "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"}
+    %script{ :src => "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"}
+    %script{ :src => "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.0/Chart.bundle.min.js"}
+
+  %body
+    %canvas.apichart{:height => "600", :width => "1280"}
+    %script
+      $(window).ready(function() {
+      pingsjson = $.getJSON( "/ips/#{@ip_id}/pings/?from=#{@time_from}&to=#{@time_to}");
+      var ctx = $(".apichart");
+      var apichart = new Chart(ctx, { data: pingsjson });
+      });

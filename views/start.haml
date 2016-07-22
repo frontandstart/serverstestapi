@@ -1,3 +1,6 @@
+:css
+  *{font-family: 'Droid Sans Mono', monospace;}
+  
 %h3 Hello, this is test task for servers.com from Roman K.
 %p
   This case implement simple API that allow to add hostname or IP ad address and track it TTL.
@@ -41,7 +44,23 @@ $form
   %li
     %p 
       GET
-      %a{ :href => "/ips/1/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28"} /ips/:id/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
-    %span 
-      Get one hosts/ip statistic in time interval.
+      %a{ :href => "/ips/1/pings/?from=2016-07-09T02:46:28&to=2016-07-22T02:46:28"} /ips/:id/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+    %span
+      Get one hosts/ip statistic in time interval. Add param &graph=on to take a look on graphics of pings.
     %p curl -X GET #{request.base_url}/ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+
+  %li
+    %p 
+      GET
+      %a{ :href => "/ips/1/pings/?from=2016-07-09T02:46:28&to=2016-07-22T02:46:28"} /ips/:id/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+    %span
+      Get one hosts/ip statistic in time interval. Add param &graph=on to take a look on graphics of pings.
+    %h4 Possible params:
+    %p 
+      %span{:color => 'black'}&stat=on
+      \- show statistic
+    %p 
+      %span{:color => 'black'}&graph=on
+      \- show graphics
+    %p curl -X GET #{request.base_url}/ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+
