@@ -29,21 +29,21 @@ $form
   %h4 Get hosts information and statistic:
   %li
     %p 
-      GET
+      GET list of ips
       %a{ :href => "/ips"} /ips
     %span List of hosts/ip adress with status on.
     %p curl -X GET #{request.base_url}/ips/
 
   %li
     %p 
-      GET
+      GET ip info
       %a{ :href => "/ips/1"} /ips/:id/
     %span Get one hosts/ip adress with all avalible statistic.
     %p curl -X GET #{request.base_url}/ips/:id/
 
   %li
     %p 
-      GET
+      GET all ping data
       %a{ :href => "/ips/1/pings/?from=2016-07-09T02:46:28&to=2016-07-22T02:46:28"} /ips/:id/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
     %span
       Get one hosts/ip statistic in time interval. Add param &graph=on to take a look on graphics of pings.
@@ -51,16 +51,16 @@ $form
 
   %li
     %p 
-      GET
-      %a{ :href => "/ips/1/pings/?from=2016-07-09T02:46:28&to=2016-07-22T02:46:28"} /ips/:id/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+      GET statistic data
+      %a{ :href => "/ips/1/pings/?stat=on&from=2016-07-09T02:46:28&to=2016-07-22T02:46:28"} /ips/:id/pings/?stat=on&from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
     %span
       Get one hosts/ip statistic in time interval. Add param &graph=on to take a look on graphics of pings.
     %h4 Possible params:
     %p 
-      %span{:color => 'black'}&stat=on
-      \- show statistic
+      %span{:color => 'black'}&compact=on
+      \- GET only time/rtt data
     %p 
       %span{:color => 'black'}&graph=on
-      \- show graphics
+      \- show graphic
     %p curl -X GET #{request.base_url}/ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
 

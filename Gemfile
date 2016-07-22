@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'rake'
 gem 'sinatra'
-gem 'sinatra-reloader'
+gem "sinatra-contrib"
 gem 'thin'
 gem 'eventmachine'
 gem 'json'
