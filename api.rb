@@ -127,8 +127,7 @@ class Api < Sinatra::Base
       end
     end
   end
-  
-  
+ 
   #stop EM usign curl servername/stop-em
   get '/stop-em' do
     EventMachine.stop
