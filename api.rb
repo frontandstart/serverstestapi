@@ -88,22 +88,31 @@ class Api < Sinatra::Base
     rescue ArgumentError
       json( message: "Set iso8601 time format for ex: /ips/1/pings/?from=2009-10-26T04:47:09Z&to=2016-07-21T00:00:09Z" )
     end
+    
     if time_to < time_from
       json( message: ":from should be less than :to" )
-    elsif params[:graph] == 'on'
-      @ip_id = ip_id
-      @time_from = time_from
-      @time_to = time_to
-      haml :graph
     else
       ip = Ip.find(params[:id])
-      @all_pings_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to)
-      all_pings = @all_pings_records.pluck(:rtt)
-      pings = all_pings.reject(&:blank?)
+      all_pings_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to)
+      all_pings = all_pings_records.pluck(:rtt).to_a
+      pings = all_pings.reject { |p| p.to_s.empty? }
       all_pings_size = all_pings.size
       pings_size = pings.size
+      lost = ( ( all_pings_size.to_f.round(2) - pings_size.to_f.round(2) ) / all_pings_size.to_f.round(2) ) * 100
+      lost.round(2)
       if all_pings_size == 0
-        json( message: "Pings dose not exist beetween this dates")  
+        json( message: "Pings dose not exist beetween this dates")
+
+      elsif params[:compact] == 'on'
+        compact_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to).select(:created_at, :rtt).to_a
+        json compact_records
+
+      elsif params[:graph] == 'on'
+        @ip_id = ip_id
+        @time_from = time_from
+        @time_to = time_to
+        haml :graph
+
       elsif params[:stat] == 'on'
         json(
           success: true,
@@ -116,16 +125,10 @@ class Api < Sinatra::Base
           max: pings.max,
           median: pings.median,
           standart_deviation: pings.standard_deviation,
-          lost_percentage: ( ( all_pings_size - pings_size ) / all_pings_size ) * 100
+          lost_pings: lost
         )
-      elsif params[:compact] == 'on'
-        compact_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to).pluck(:created_at, :rtt).to_a
-        compact_records.each do |a|
-          a[:created_at] = a[:created_at].to_i
-        end
-        json compact_records
       else
-        json @all_pings_records
+        json all_pings_records
       end
     end
   end
@@ -154,6 +157,7 @@ EM.run do
           ping_data = Ping.new(:ip_id => "#{hostname.id}", :timeout => false, :noroute => true)
         end
       else
+        # Do nothing when hostname disable
       end
       ping_data.save!        
     end
