@@ -1,4 +1,4 @@
-@dir = "/users/cloud-user/api/"
+@dir = "/home/cloud-user/api/"
 worker_processes 2
 working_directory @dir
 timeout 60
