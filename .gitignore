@@ -1,2 +1,3 @@
 db/database.yml
 /tmp
+Gemfile.lock
