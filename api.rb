@@ -100,7 +100,7 @@ class Api < Sinatra::Base
         json( message: "Pings dose not exist beetween this dates")
 
       elsif params[:compact] == 'on'
-        compact_records = all_pings_records.select(:rtt, :created_at).to_a
+        compact_records = all_pings_records.select(:rtt, :created_at)
         json compact_records
 
       elsif params[:graph] == 'on'

@@ -9,58 +9,62 @@
 %p Here I choice way without pure SQL, using gems: activerecord, sinatra, json, net-ping, net-uri
 $form 
 %ol
-  %h3 API METHODS.
+  %h3 API.
+
   %h4 Add/edit/del hosts:
+
   %li
     %p POST /ips
     %span Adding hostname adress to track, allowed params: adress, on.
     %p curl -X POST -d "address=hostname&on=true" #{request.base_url}/api
   %li
-    %p 
-      UPDATE
-      %a{ :href => "/ips/1"} /ips/:id/
-    %span List of hosts/ip adress with status on
+    %p UPDATE /ips/:id
     %p curl -X PUT -d "address=hostname2&on=false" #{request.base_url}/ips/:id/
   %li
-    %p
-      DELETE /api/id
-    %span Delete hostname from tracking
+    %p DELETE /api/:id
     %p curl -X DELETE #{request.base_url}/ips/:id/
-  %h4 Get hosts information and statistic:
+
+  %h4 Get host information and statistic:
+
   %li
     %p 
-      GET list of ips
+      GET list of host/ip adress.
       %a{ :href => "/ips"} /ips
-    %span List of hosts/ip adress with status on.
     %p curl -X GET #{request.base_url}/ips/
 
   %li
     %p 
-      GET ip info
-      %a{ :href => "/ips/1"} /ips/:id/
-    %span Get one hosts/ip adress with all avalible statistic.
+      GET host/ip adress params.
+      %a{ :href => "/ips/1"} /ips/:id/ 
     %p curl -X GET #{request.base_url}/ips/:id/
 
   %li
-    %p 
-      GET all ping data
-      %a{ :href => "/ips/1/pings/?from=2016-07-09T02:46:28&to=2016-07-22T02:46:28"} /ips/:id/pings/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
-    %span
-      Get one hosts/ip statistic in time interval. Add param &graph=on to take a look on graphics of pings.
-    %p curl -X GET #{request.base_url}/ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+    %p
+      GET all ping data between time interval
+      %a{ :href => "/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z"} /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
+    %p curl -X GET #{request.base_url}/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
 
   %li
     %p 
       GET statistic data
-      %a{ :href => "/ips/1/pings/?stat=on&from=2016-07-09T02:46:28&to=2016-07-22T02:46:28"} /ips/:id/pings/?stat=on&from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
-    %span
-      Get one hosts/ip statistic in time interval. Add param &graph=on to take a look on graphics of pings.
-    %h4 Possible params:
-    %p 
-      %span{:color => 'black'}&compact=on
-      \- GET only time/rtt data
-    %p 
-      %span{:color => 'black'}&graph=on
-      \- show graphic
-    %p curl -X GET #{request.base_url}/ips/:id/stat/?from=2016-07-09T02:46:28?to=2016-07-11T02:46:28
+      %a{ :href => "/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&stat=on"} /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
+    %p curl -X GET #{request.base_url}/ips/1/pings/?stat=on&from=2016-07-19T11:06:18%22&to=2016-07-19T11:12:30
+
+  %li
+    %p
+      GET pings graphic
+      %a{ :href => "/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on"} /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on
+    %p Open url browser #{request.base_url}/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on
+
+  %li
+    %p
+      GET compact data (need for build graph)
+      %a{ :href => "ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&compact=on"} ips/1/pings/?graph=on&from=2016-07-19T11:06:18%22&to=2016-07-19T11:12:30
+    %p curl -X GET #{request.base_url}/ips/1/pings/?compact=on&from=2016-07-19T11:06:18:22&to=2016-07-19T11:12:30
+
+  %p
+    I move to production DB old data where i write sometime in :rtt = nil, this is a reason why on some graphics you can see that line not going down to zero, this line connect with another exist data: like 
+    %a{ :href => '' } this
+
+
 
