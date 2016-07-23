@@ -1,5 +1,5 @@
 require_relative 'db'
-require 'sinatra'
+require 'sinatra/base'
 require "sinatra/json"
 require 'thin'
 require 'json'
