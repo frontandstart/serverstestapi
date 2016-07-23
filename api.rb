@@ -7,7 +7,6 @@ require 'haml'
 require 'eventmachine'
 require 'net/ping'
 require 'descriptive_statistics'
-require 'Date'
 
 class Api < Sinatra::Base
 
