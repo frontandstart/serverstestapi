@@ -3,4 +3,4 @@ require "sinatra"
 
 require File.expand_path '../api.rb', __FILE__
 
-Api.run!
+run Api

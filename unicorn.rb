@@ -1,5 +1,5 @@
 @dir = "/home/cloud-user/api/"
-worker_processes 2
+worker_processes 4
 working_directory @dir
 timeout 60
 listen "#{@dir}tmp/sockets/unicorn.sock", :backlog => 64
