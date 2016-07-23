@@ -1,25 +1,64 @@
-/** %Y-%m-%dT%H:%M:%S.000Z - timeformat
-!!!
+!!!5
 %html
   %head
+    %script{ :src => 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js' }
+    :javascript
+      if ($('#chart').is('[data-mg-uid]')) {
+        $('.servers').fadeOut('slow');;
+      }
     %link{ :href => '/metricsgraphics.min.css', :rel => 'stylesheet', :type => 'text/css' }
+    :css
+      * {margin:0px; padding:0px}
+      .servers{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(27, 27, 27, 0.8)
+      }
+      .logo{
+        display: block;
+        position: absolute;
+        width: 236px;
+        height: 64px;
+        margin: -32px 0px 0px -118px;
+        top: 50%;
+        left: 50%;
+        background-image: url('/logo-servers.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      .logo p{
+        font-size: 12px;
+        margin: 64px 0px 0px 0px;
+        text-align: center;
+        font-family: Yefimov, 'Lato', sans-serif;
+        color: white;
+      }
   %body
     #chart
-    %script{ :src => 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js' }
+    .servers
+      .logo
+        %p loading 
     %script{ :src => 'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' }
     %script{ :src => '/metricsgraphics.min.js' }
     :javascript
       d3.json("/ips/#{@ip_id}/pings/?from=#{@time_from}&to=#{@time_to}&compact=on", function(data) {
-        data = MG.convert.date(data, 'created_at');
+        data.forEach(function(t){
+          t.created_at = d3.time.format("%Y-%m-%dT%H:%M:%S.000Z").parse(t.created_at);
+        });
         MG.data_graphic({
-            title: "Line Chart",
-            description: "This is a simple line chart. You can remove the area portion by adding area: false to the arguments list.",
+            title: "Pings graph for ip: #{@ip_id}, from: #{@time_from}, to: #{@time_to}",
+            description: "No data",
             data: data,
-            width: 1200,
-            height: 400,
-            right: 40,
+            interpolate: 'basic',
+            missing_is_zero: true,
+            width: 1280,
+            height: 640,
+            right: 0,
             target: document.getElementById('chart'),
             x_accessor: 'created_at',
             y_accessor: 'rtt'
         });
       });
+
+

@@ -78,11 +78,13 @@ class Api < Sinatra::Base
   get '/ips/:id/pings/' do
     time_from = params[:from]
     time_to = params[:to]
+    time_from = Time.now.beginning_of_day.utc.iso8601 if time_from.nil?
+    time_to = Time.now.utc.iso8601 if time_to.nil?
     begin
     # ... code below, i should use activerecord or another sohtgun to validate data/params but you know .. life is pain
       ip_id = params[:id].to_i
-      time_from = time_from.to_time.utc.iso8601
-      time_to = time_to.to_time.utc.iso8601
+      time_from = time_from.to_time.utc.iso8601 if time_from.class != Time
+      time_to = time_to.to_time.utc.iso8601 if time_to.class != Time
     rescue NoMethodError
       json( message: "Not enough or wrong param datatype, check docs" )
     rescue ArgumentError
@@ -94,17 +96,12 @@ class Api < Sinatra::Base
     else
       ip = Ip.find(params[:id])
       all_pings_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to)
-      all_pings = all_pings_records.pluck(:rtt).to_a
-      pings = all_pings.reject { |p| p.to_s.empty? }
-      all_pings_size = all_pings.size
-      pings_size = pings.size
-      lost = ( ( all_pings_size.to_f.round(2) - pings_size.to_f.round(2) ) / all_pings_size.to_f.round(2) ) * 100
-      lost.round(2)
-      if all_pings_size == 0
+
+      if all_pings_records.count == 0
         json( message: "Pings dose not exist beetween this dates")
 
       elsif params[:compact] == 'on'
-        compact_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to).select(:created_at, :rtt).to_a
+        compact_records = all_pings_records.select(:rtt, :created_at).to_a
         json compact_records
 
       elsif params[:graph] == 'on'
@@ -114,6 +111,12 @@ class Api < Sinatra::Base
         haml :graph
 
       elsif params[:stat] == 'on'
+        all_pings = all_pings_records.pluck(:rtt).to_a
+        pings = all_pings.reject { |p| p.to_s.empty? }
+        all_pings_size = all_pings.size
+        pings_size = pings.size
+        lost = ( ( all_pings_size.to_f.round(2) - pings_size.to_f.round(2) ) / all_pings_size.to_f.round(2) ) * 100
+        lost.round(2)
         json(
           success: true,
           host_id: ip_id,
