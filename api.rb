@@ -7,6 +7,7 @@ require 'haml'
 require 'eventmachine'
 require 'net/ping'
 require 'descriptive_statistics'
+require 'Date'
 
 class Api < Sinatra::Base
 
@@ -96,7 +97,8 @@ class Api < Sinatra::Base
       haml :graph
     else
       ip = Ip.find(params[:id])
-      all_pings = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to).pluck(:rtt)
+      @all_pings_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to)
+      all_pings = @all_pings_records.pluck(:rtt)
       pings = all_pings.reject(&:blank?)
       all_pings_size = all_pings.size
       pings_size = pings.size
@@ -117,13 +119,13 @@ class Api < Sinatra::Base
           lost_percentage: ( ( all_pings_size - pings_size ) / all_pings_size ) * 100
         )
       elsif params[:compact] == 'on'
-        @date_and_ping = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to).pluck(:created_at, :rtt)
-        @pings = @date_and_ping.reject { |ping| ping[1].blank? }
-        @pings.map { |ping| ping[0] = ping[0].to_time.utc.strftime("%Y%m%dT%H%M%S") }
-        json @pings
+        compact_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to).pluck(:created_at, :rtt).to_a
+        compact_records.each do |a|
+          a[:created_at] = a[:created_at].to_i
+        end
+        json compact_records
       else
-        all_pings_stat = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to)
-        json @all_pings_stat
+        json @all_pings_records
       end
     end
   end
@@ -168,4 +170,4 @@ end
 # In sart of this task I start write pure SQL for db, and then think if I wantto change db structure..
 # Than start little bit research ICMP protocol and decide use core NET::PING::ICMP
 # but soon i found this gem https://github.com/zzip/icmp4em/ and this code will be more pure and it will be easy way.
-# So task interestind and not limit in time/functional border. And in one time i think just write working code.
+# So task interestind and not limit in time/functional border. And in one time i think - just write working code.
