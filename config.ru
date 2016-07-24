@@ -1,4 +1,4 @@
-#\ -s puma
 require "sinatra"
-require_relative 'ServersApi'
+configure { set :server, :puma }
+require './ServersApi'
 run ServersApi
