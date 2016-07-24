@@ -1,6 +1,4 @@
-require "rubygems"
+#\ -s puma
 require "sinatra"
-
-require File.expand_path '../api.rb', __FILE__
-
-run Api
+require_relative 'ServersApi'
+run ServersApi

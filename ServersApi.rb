@@ -72,7 +72,6 @@ class Api < Sinatra::Base
       json ip
     end
   end
-  
 
   get '/ips/:id/pings/' do
     time_from = params[:from]
@@ -165,12 +164,7 @@ EM.run do
     end
   end
 
-  #if you try to get post my api so hard its probably help sometime
-  EM.add_periodic_timer(22) do
-    ActiveRecord::Base.clear_active_connections!
-  end
-
-  #Api.run!
+  Api.run
 end
 
 # In sart of this task I start write pure SQL for db, and then think if I wantto change db structure..

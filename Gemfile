@@ -11,4 +11,4 @@ gem 'mysql2'
 
 gem 'descriptive_statistics'
 
-gem 'unicorn'
+gem 'puma'
