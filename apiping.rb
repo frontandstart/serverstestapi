@@ -163,8 +163,7 @@ EM.run do
       ping_data.save!        
     end
   end
-
-  Api.run
+  Api.run!
 end
 
 # In sart of this task I start write pure SQL for db, and then think if I wantto change db structure..

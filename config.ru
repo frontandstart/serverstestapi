@@ -1,4 +1,4 @@
 require "sinatra"
-require './ServersApi'
+require './apiping'
 configure { set :server, :puma }
-run ServersApi
+run! apiping
