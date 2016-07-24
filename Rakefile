@@ -1,3 +1,4 @@
+# DB migrations
 require_relative 'db'
 namespace :db do
   task :default => :migrate

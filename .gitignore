@@ -1,3 +1,5 @@
 db/database.yml
-/tmp
+tmp
 Gemfile.lock
+config/thin.yml
+config/database.yml

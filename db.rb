@@ -2,9 +2,10 @@ require 'active_record'
 require 'mysql2'
 require 'yaml'
 
-@environment = ENV['RACK_ENV'] || 'development'
-@dbconfig = YAML.load(File.read('./db/database.yml'))
-ActiveRecord::Base.establish_connection @dbconfig[@environment]
+@env = ENV['RACK_ENV'] || 'development'
+@config = YAML.load(File.read('./config/database.yml'))
+
+ActiveRecord::Base.establish_connection @config[@env]
 
 class Ip < ActiveRecord::Base
   has_many :pings

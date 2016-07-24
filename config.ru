@@ -1,4 +1,3 @@
-require "sinatra"
-require './apiping'
-configure { set :server, :puma }
-run! apiping
+#!/usr/bin/env ruby
+require './api'
+run Api

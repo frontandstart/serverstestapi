@@ -1,19 +1,20 @@
-require_relative 'db'
-require 'sinatra/base'
-require "sinatra/json"
-require 'thin'
+require 'sinatra'
+require 'sinatra/json'
+require 'puma'
 require 'json'
 require 'haml'
-require 'eventmachine'
-require 'net/ping'
 require 'descriptive_statistics'
+require './db'
+
+configure { 
+  set :server, :puma
+}
 
 class Api < Sinatra::Base
 
   get '/' do
     haml :start
   end
-  
   post '/ips/new' do
     hostname = Ip.new(params)
     def self.hostname_save(hostname)
@@ -31,7 +32,7 @@ class Api < Sinatra::Base
       end
     end
   end
-  
+
   put '/ips/:id/' do
     hostname = Ip.find(params[:id])
     if hostname.nil?
@@ -41,7 +42,7 @@ class Api < Sinatra::Base
       hostname_save(hostname)
     end
   end
-  
+
   delete '/ips/:id/' do
     hostname = Ip.find(params[:id])
     if hostname.nil?
@@ -88,7 +89,7 @@ class Api < Sinatra::Base
     rescue ArgumentError
       json( message: "Set iso8601 time format for ex: /ips/1/pings/?from=2009-10-26T04:47:09Z&to=2016-07-21T00:00:09Z" )
     end
-    
+  
     if time_to < time_from
       json( message: ":from should be less than :to" )
     else
@@ -133,37 +134,6 @@ class Api < Sinatra::Base
       end
     end
   end
- 
-  #stop EM usign curl servername/stop-em
-  get '/stop-em' do
-    EventMachine.stop
-    json( wow: 'em stopped')
-  end
-    
-end
-
-EM.run do
-  
-  EM.add_periodic_timer(1) do
-    Ip.all.each do |hostname|
-      if hostname.on = true
-        begin
-          @send = Net::Ping::ICMP.new(host="#{hostname.address}", timeout='120')
-          if @send.ping?
-            ping_data = Ping.new(:ip_id => "#{hostname.id}", :rtt => "#{@send.duration}", :timeout => false, :noroute => false)
-          else
-            ping_data = Ping.new(:ip_id => "#{hostname.id}", :rtt => "", :timeout => true, :noroute => false)
-          end
-        rescue Errno::EHOSTUNREACH
-          ping_data = Ping.new(:ip_id => "#{hostname.id}", :rtt => "", :timeout => false, :noroute => true)
-        end
-      else
-        # Do nothing when hostname disable
-      end
-      ping_data.save!        
-    end
-  end
-  Api.run!
 end
 
 # In sart of this task I start write pure SQL for db, and then think if I wantto change db structure..
