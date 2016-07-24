@@ -1,4 +1,4 @@
 require "sinatra"
-configure { set :server, :puma }
 require './ServersApi'
+configure { set :server, :puma }
 run ServersApi
