@@ -7,6 +7,7 @@ gem 'json'
 gem 'haml'
 gem 'net-ping'
 gem 'activerecord'
+gem 'thin'
 gem 'mysql2'
 
 gem 'descriptive_statistics'
