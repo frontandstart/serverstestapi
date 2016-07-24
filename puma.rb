@@ -7,3 +7,4 @@ state_path "/home/cloud-user/api/tmp/pids/puma.state"
 environment 'production'
 workers 2
 threads 4, 16
+daemonize true
