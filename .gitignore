@@ -1,4 +1,4 @@
-config
+config/thin.yml
 tmp
 log
 Gemfile.lock
