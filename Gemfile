@@ -13,3 +13,6 @@ gem 'mysql2'
 gem 'descriptive_statistics'
 gem 'puma'
 gem 'thin'
+
+
+gem 'capistrano', :group => :development
