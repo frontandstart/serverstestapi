@@ -94,7 +94,7 @@ class Api < Sinatra::Base
       json( message: ":from should be less than :to" )
     else
       ip = Ip.find(params[:id])
-      all_pings_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to)
+      all_pings_records = Ping.pluck(:ip_id,:created_at,:rtt).where(:ip_id => ip_id, :created_at => time_from..time_to)
 
       if all_pings_records.count == 0
         json( message: "Pings dose not exist beetween this dates")

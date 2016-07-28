@@ -1,5 +1,8 @@
 :css
-  *{font-family: 'Droid Sans Mono', monospace;}
+  *{
+    font-family: 'Droid Sans Mono', monospace;
+    font-size: 14px;
+  }
   
 %h3 Hello, this is test task for servers.com from Roman K.
 %p
@@ -41,26 +44,26 @@ $form
   %li
     %p
       GET all ping data between time interval
-      %a{ :href => "/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z"} /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
-    %p curl -X GET #{request.base_url}/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
+      %a{ :href => "/ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z"} /ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z
+    %p curl -X GET #{request.base_url}/ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z
 
   %li
     %p 
       GET statistic data
-      %a{ :href => "/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&stat=on"} /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
-    %p curl -X GET #{request.base_url}/ips/1/pings/?stat=on&from=2016-07-19T11:06:18%22&to=2016-07-19T11:12:30
+      %a{ :href => "/ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z&stat=on"} /ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z&stat=on
+    %p curl -X GET #{request.base_url}/ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z&stat=on
 
   %li
     %p
       GET pings graphic
-      %a{ :href => "/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on"} /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on
-    %p Open url browser #{request.base_url}/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on
+      %a{ :href => "/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on"} /ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z&graph=on
+    %p Open url browser #{request.base_url}/ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z&graph=on
 
   %li
     %p
       GET compact data (need for build graph)
-      %a{ :href => "ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&compact=on"} ips/1/pings/?graph=on&from=2016-07-19T11:06:18%22&to=2016-07-19T11:12:30
-    %p curl -X GET #{request.base_url}/ips/1/pings/?compact=on&from=2016-07-19T11:06:18:22&to=2016-07-19T11:12:30
+      %a{ :href => "ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z&compact=on"} ips/1/pings/?from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z&compact=on
+    %p curl -X GET #{request.base_url}/ips/1/pings/from=2016-07-21T22:00:00Z&to=2016-07-22T00:00:00Z?compact=on
 
   %p
     I move to production DB old data where i write sometime in :rtt = nil, this is a reason why on some graphics you can see that line not going down to zero, this line connect with another exist data: like 
