@@ -30,7 +30,7 @@ class Api < Sinatra::Base
     end
   end
 
-  put '/ips/:id/' do
+  put '/ips/:id' do
     hostname = Ip.find(params[:id])
     if hostname.nil?
       json( message: "Hostname with id: #{params[:id]} dose not exist" ) 
@@ -40,7 +40,7 @@ class Api < Sinatra::Base
     end
   end
 
-  delete '/ips/:id/' do
+  delete '/ips/:id' do
     hostname = Ip.find(params[:id])
     if hostname.nil?
       json( :message=> "Hostname with #{params[:id]} not found" )
@@ -62,7 +62,7 @@ class Api < Sinatra::Base
     end
   end
 
-  get '/ips/:id/' do
+  get '/ips/:id' do
     ip = Ip.find(params[:id])
     if ip.nil?
       json( message: "Hostname with #{params[:id]} was deleted or not yet created" ) 
@@ -71,7 +71,7 @@ class Api < Sinatra::Base
     end
   end
 
-  get '/ips/:id/pings/' do
+  get '/ips/:id/pings' do
     time_from = params[:from]
     time_to = params[:to]
     time_from = Time.now.beginning_of_day.utc.iso8601 if time_from.nil?
@@ -91,7 +91,7 @@ class Api < Sinatra::Base
       json( message: ":from should be less than :to" )
     else
       ip = Ip.find(params[:id])
-      all_pings_records = Ping.pluck(:ip_id,:created_at,:rtt).where(:ip_id => ip_id, :created_at => time_from..time_to)
+      all_pings_records = Ping.where(:ip_id => ip_id, :created_at => time_from..time_to)
 
       if all_pings_records.count == 0
         json( message: "Pings dose not exist beetween this dates")
