@@ -1,4 +1,4 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/json'
 require 'puma'
 require 'json'
@@ -6,9 +6,6 @@ require 'haml'
 require 'descriptive_statistics'
 require './db'
 
-configure { 
-  set :server, :puma
-}
 
 class Api < Sinatra::Base
 
