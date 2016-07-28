@@ -1,5 +1,4 @@
-config/database.yml
+config
 tmp
 log
 Gemfile.lock
-config/thin.yml
