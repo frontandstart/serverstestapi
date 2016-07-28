@@ -14,15 +14,15 @@ $form
   %h4 Add/edit/del hosts:
 
   %li
-    %p POST /ips
+    %p POST /ips/new
     %span Adding hostname adress to track, allowed params: adress, on.
-    %p curl -X POST -d "address=hostname&on=true" #{request.base_url}/api
+    %p curl -X POST -d "address=hostname&on=true" #{request.base_url}/ips/new
   %li
     %p UPDATE /ips/:id
-    %p curl -X PUT -d "address=hostname2&on=false" #{request.base_url}/ips/:id/
+    %p curl -X PUT -d "address=hostname2&on=false" #{request.base_url}/ips/:id
   %li
     %p DELETE /api/:id
-    %p curl -X DELETE #{request.base_url}/ips/:id/
+    %p curl -X DELETE #{request.base_url}/ips/:id
 
   %h4 Get host information and statistic:
 
@@ -30,13 +30,13 @@ $form
     %p 
       GET list of host/ip adress.
       %a{ :href => "/ips"} /ips
-    %p curl -X GET #{request.base_url}/ips/
+    %p curl -X GET #{request.base_url}/ips
 
   %li
     %p 
       GET host/ip adress params.
-      %a{ :href => "/ips/1"} /ips/:id/ 
-    %p curl -X GET #{request.base_url}/ips/:id/
+      %a{ :href => "/ips/1"} /ips/:id
+    %p curl -X GET #{request.base_url}/ips/:id
 
   %li
     %p

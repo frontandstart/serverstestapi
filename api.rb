@@ -33,7 +33,7 @@ class Api < Sinatra::Base
     end
   end
 
-  put '/ips/:id/' do
+  put '/ips/:id' do
     hostname = Ip.find(params[:id])
     if hostname.nil?
       json( message: "Hostname with id: #{params[:id]} dose not exist" ) 
@@ -43,7 +43,7 @@ class Api < Sinatra::Base
     end
   end
 
-  delete '/ips/:id/' do
+  delete '/ips/:id' do
     hostname = Ip.find(params[:id])
     if hostname.nil?
       json( :message=> "Hostname with #{params[:id]} not found" )
@@ -65,7 +65,7 @@ class Api < Sinatra::Base
     end
   end
 
-  get '/ips/:id/' do
+  get '/ips/:id' do
     ip = Ip.find(params[:id])
     if ip.nil?
       json( message: "Hostname with #{params[:id]} was deleted or not yet created" ) 
@@ -74,7 +74,7 @@ class Api < Sinatra::Base
     end
   end
 
-  get '/ips/:id/pings/' do
+  get '/ips/:id/pings' do
     time_from = params[:from]
     time_to = params[:to]
     time_from = Time.now.beginning_of_day.utc.iso8601 if time_from.nil?
