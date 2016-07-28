@@ -71,7 +71,7 @@ class Api < Sinatra::Base
     end
   end
 
-  get '/ips/:id/pings' do
+  get '/ips/:id/pings/' do
     time_from = params[:from]
     time_to = params[:to]
     time_from = Time.now.beginning_of_day.utc.iso8601 if time_from.nil?
