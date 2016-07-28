@@ -4,45 +4,45 @@
 This case implement simple API that allow to add hostname or IP ad address and track it TTL. 
 Here I choice way without pure SQL, using gems: activerecord, sinatra, json, net-ping, net-uri
 
-###POST /ips - add hosts
+####POST /ips - add hosts
 Allowed params: adress, on.
 ```
 curl -X POST -d "address=hostname&on=true" http://api-test.frontandstart.com/ips
 ```
 
-###UPDATE /ips/:id
+####UPDATE /ips/:id
 ```
 curl -X PUT -d "address=hostname2&on=false" http://api-test.frontandstart.com/ips/:id/
 ```
-###DELETE /api/:id
+####DELETE /api/:id
 ```
 curl -X DELETE http://api-test.frontandstart.com/ips/:id/
 ```
 
-### GET /ips - list of hosts adress.
+#### GET /ips - list of hosts adress.
 Get host information and statistic:
 
 ```
 curl -X GET http://api-test.frontandstart.com/ips/
 ```
 
-### GET Hosts adress params. /ips/:id/
+#### GET Hosts adress params. /ips/:id/
 ```
 curl -X GET http://api-test.frontandstart.com/ips/:id/
 ```
 
-### GET all ping data between time interval /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
+#### GET all ping data between time interval /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
 ```
 curl -X GET http://api-test.frontandstart.com/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
 ```
 
-### GET statistic data /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
+#### GET statistic data /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z
 ```
 curl -X GET http://api-test.frontandstart.com/ips/1/pings/?stat=on&from=2016-07-19T11:06:18%22&to=2016-07-19T11:12:30
 ```
 
-## Build graphic in browser with &graph=on method
-### GET /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on
+### Build graphic in browser with &graph=on method
+#### GET /ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016-07-23T00:00:00Z&graph=on
 Open url in browser
 1 day interval:
 ```
@@ -51,7 +51,7 @@ http://api-test.frontandstart.com/ips/1/pings/?from=2016-07-22T00:00:00Z&to=2016
 few minutes range
 http://api-test.frontandstart.com/ips/1/pings/?from=2016-07-21T22:08:00Z&to=2016-07-21T22:09:33Z&graph=on
 
-### GET compact data (need for build ?graph=on)
+#### GET compact data (need for build ?graph=on)
 ```
 curl -X GET http://api-test.frontandstart.com/ips/1/pings/?compact=on&from=2016-07-19T11:06:18:22&to=2016-07-19T11:12:30
 ```
